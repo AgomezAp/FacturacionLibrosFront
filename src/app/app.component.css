@@ -4,6 +4,7 @@
     min-height: 100vh;
     position: relative;
     z-index: 1;
+    overflow-y: auto;
   }
 
 body {
@@ -16,6 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-y: auto;
 }
 h1 {
     color: #e2ac3d;
@@ -182,3 +184,66 @@ h3 {
   .pagination-controls span {
     font-weight: bold;
   }
+  /* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .form-group {
+    flex: 1 1 100%;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+  }
+
+  .pagination-controls button {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .registrar-factura-container {
+    padding: 10px;
+  }
+
+  .form-group-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-group {
+    flex: 1 1 100%;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+  }
+
+  .pagination-controls button {
+    padding: 8px;
+    margin: 5px 0;
+  }
+
+  .table-container {
+    margin-top: 10px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
