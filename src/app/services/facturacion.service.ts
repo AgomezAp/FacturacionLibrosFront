@@ -21,7 +21,7 @@ export class FacturacionService {
   }
   
   registrarFactura(factura:Facturacion):Observable<Facturacion>{
-    return this.http.post<Facturacion>(`${this.appUrl}${this.apiUrl}/ventas`, factura)
+    return this.http.post<Facturacion>(`${this.appUrl}${this.apiUrl}/vender`, factura)
   }
 
 }

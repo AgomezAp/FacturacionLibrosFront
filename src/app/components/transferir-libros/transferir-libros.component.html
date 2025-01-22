@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<div class="transferir-libros-container">
+    <h2>Transferir Stock de Libros</h2>
+    <form (ngSubmit)="onTransferirLibros()">
+      <div class="form-group">
+        <label for="user">Seleccionar Usuario:</label>
+        <select id="user" [(ngModel)]="selectedUserUid" name="user" required>
+          <option *ngFor="let user of users" [value]="user.Uid">{{ user.nombre }} {{ user.apellido }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="stock">Cantidad de Stock:</label>
+        <input type="number" id="stock" [(ngModel)]="stock" name="stock" required />
+      </div>
+      <button type="submit">Transferir Stock</button>
+    </form>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </div>
