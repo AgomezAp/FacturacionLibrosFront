@@ -215,13 +215,13 @@ export class FacturaComponent implements OnInit {
       align: 'center',
     });
     doc.text(
-      'Teléfono: +57 123 456 7890 | Email: contacto@tarotlatinoamerica.com',
+      'Teléfono: +57 3242341917 | Email: andrespublicidad@andrespublicidadtg.com',
       105,
       28,
       { align: 'center' }
     );
     doc.text(
-      'Compañía: ANDRÉS PUBLICIDAD TG S.A.S | NIT: 10001010010101',
+      'Compañía: ANDRÉS PUBLICIDAD TG S.A.S | NIT: 901458142',
       105,
       34,
       { align: 'center' }
