@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private authorizedEmails: string[] = ['agomez.desarrollo@andrespublicidadtg.com']; // Correos electrónicos autorizados
+  private authorizedEmails: string[] = ['agomez.desarrollo@andrespublicidadtg.com','agrajales.seleccion@andrespublicidadtg.com']; // Correos electrónicos autorizados
 
   constructor() {}
 
