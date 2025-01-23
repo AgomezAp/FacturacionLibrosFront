@@ -36,7 +36,7 @@ export class UserService {
     return this.http.post(`${this.appUrl}${this.apiUrl}/transferir-stock`, data);
   }
   getUserStock(Uid: string): Observable<any> {
-    return this.http.get(`${this.appUrl}${this.apiUrl}/verStockUser/${Uid}`);
+    return this.http.get(`${this. appUrl}${this.apiUrl}/verStockUser/${Uid}`);
   }
   getUser(): Observable<User[]> {
     return this.http.get<User[]>(`${this.appUrl}${this.apiUrl}/todosLosUsuarios`);

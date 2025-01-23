@@ -1,5 +1,6 @@
 export interface Facturacion{
-    Uid?: string;
+    seller?: string;
+    sellerName?: string;
     clientName?: string;
     clientID?: string;
     clientgmail?: string;

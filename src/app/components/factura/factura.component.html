@@ -9,10 +9,10 @@
     <div class="registrar-factura-container">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group-container">
-            <div class="form-group">
-                <label for="Uid">Vendedor:</label>
-                <input type="text" id="Uid" name="Uid" [(ngModel)]="factura.sellerName" readonly />
-              </div>
+          <div class="form-group">
+            <label for="seller">ID Vendedor:</label>
+            <input type="text" id="seller" name="seller" [(ngModel)]="factura.seller" readonly />
+          </div>
           <div class="form-group">
             <label for="clientID">ID Cliente:</label>
             <input type="text" id="clientID" name="clientID" [(ngModel)]="factura.clientID" required />
@@ -73,6 +73,7 @@
         </div>
         <button type="submit">Agregar Venta</button>
       </form>
+      <button (click)="downloadSalesExcel()">Descargar Ventas en Excel</button>
       <h3>Datos de Ventas</h3>
       <button (click)="toggleSalesData()">
         {{ showSalesData ? "Ocultar Datos" : "Mostrar Datos" }}
@@ -98,7 +99,7 @@
           <tbody>
             <tr *ngFor="let item of paginatedSales; let i = index">
               <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
-              <td>{{ item.seller }}</td>
+              <td>{{ item.sellerName }}</td>
               <td>{{ item.clientName }}</td>
               <td>{{ item.clientID }}</td>
               <td>{{ item.clientgmail }}</td>

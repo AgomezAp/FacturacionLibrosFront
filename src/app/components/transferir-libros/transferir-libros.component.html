@@ -2,6 +2,9 @@
 
 <div class="transferir-libros-container">
     <h2>Transferir Stock de Libros</h2>
+    <div class="bodega-stock">
+      <p>Stock en Bodega: {{ bodegaStock }}</p>
+  </div>
     <form (ngSubmit)="onTransferirLibros()">
       <div class="form-group">
         <label for="user">Seleccionar Usuario:</label>
