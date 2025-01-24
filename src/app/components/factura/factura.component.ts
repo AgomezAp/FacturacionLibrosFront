@@ -46,7 +46,7 @@ export class FacturaComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 8;
   sellerStock: number = 0;
-  email: string = 'agomez.desarrollo@andrespublicidadtg.com';
+  emails: string[] = ['agomez.desarrollo@andrespublicidadtg.com', 'aagudelo.investigacion@andrespublicidadtg.com'];
   constructor(
     private facturacion: FacturacionService,
     private toastr: ToastrService,
@@ -294,16 +294,10 @@ export class FacturaComponent implements OnInit {
     const pdfBlob = this.downloadInvoice();
     const formData = new FormData();
      formData.append('pdf', pdfBlob, 'factura.pdf'); 
-    formData.append('email', this.email);
+     formData.append('emails', JSON.stringify(this.emails))
 
-    this.http.post('http://localhost:3010/api/send-invoice', formData).subscribe(
-      (response) => {
-        this.toastr.success('Factura enviada por correo electrónico', 'Éxito');
-      },
-      (error) => {
-        this.toastr.error('Error al enviar la factura por correo electrónico', 'Error');
-        console.error('Error al enviar la factura por correo electrónico:', error);
-      }
+    this.http.post('http://185.137.92.54:3050/api/send-invoice', formData).subscribe(
+     
     );
   }
   downloadSalesExcel() {
