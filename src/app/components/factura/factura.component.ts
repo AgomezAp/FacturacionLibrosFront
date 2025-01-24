@@ -46,7 +46,7 @@ export class FacturaComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 8;
   sellerStock: number = 0;
-  emails: string[] = ['agomez.desarrollo@andrespublicidadtg.com', 'aagudelo.investigacion@andrespublicidadtg.com'];
+  emails: string[] = ['directivos@andrespublicidadtg.com', 'lbarragan.contabilidad@andrespublicidadtg.com'];
   constructor(
     private facturacion: FacturacionService,
     private toastr: ToastrService,
