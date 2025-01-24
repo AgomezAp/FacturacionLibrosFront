@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   OnInit,
@@ -45,11 +46,13 @@ export class FacturaComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 8;
   sellerStock: number = 0;
+  email: string = 'agomez.desarrollo@andrespublicidadtg.com';
   constructor(
     private facturacion: FacturacionService,
     private toastr: ToastrService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -106,7 +109,8 @@ export class FacturaComponent implements OnInit {
         this.toastr.success('', 'Factura registrada correctamente');
         this.errorMessage = '';
         this.obtenerVentas(); // Recargar las ventas después de registrar una nueva factura
-        this.downloadInvoice(); // Generar el PDF después de registrar la factura
+       //this.downloadInvoice(); // Generar el PDF después de registrar la factura
+        this.sendInvoiceByEmail(); // Enviar la factura por correo electrónico
         this.resetForm();
         this.obtenerInformacionVendedor();
       },
@@ -283,6 +287,24 @@ export class FacturaComponent implements OnInit {
   
     // Descargar el PDF
     doc.save(`Factura_${clientName.replace(/\s+/g, '_')}.pdf`);
+   return doc.output('blob');
+   
+  }
+  sendInvoiceByEmail() {
+    const pdfBlob = this.downloadInvoice();
+    const formData = new FormData();
+     formData.append('pdf', pdfBlob, 'factura.pdf'); 
+    formData.append('email', this.email);
+
+    this.http.post('http://localhost:3010/api/send-invoice', formData).subscribe(
+      (response) => {
+        this.toastr.success('Factura enviada por correo electrónico', 'Éxito');
+      },
+      (error) => {
+        this.toastr.error('Error al enviar la factura por correo electrónico', 'Error');
+        console.error('Error al enviar la factura por correo electrónico:', error);
+      }
+    );
   }
   downloadSalesExcel() {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.sales);
